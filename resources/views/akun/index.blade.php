@@ -27,6 +27,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('post') }}">Post</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('signout') }}">Logout</a>
+                </li>
             </ul>
         </div>
     </nav>
