@@ -60,11 +60,11 @@
                                     @csrf
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="email" name="username" required
-                                            placeholder="name@example.com" autofocus>
-                                        @if ($errors->has('email'))
-                                        <span class="text-danger">{{ $errors->first('email') }}</span>
+                                            placeholder="username" autofocus>
+                                        @if ($errors->has('username'))
+                                        <span class="text-danger">{{ $errors->first('username') }}</span>
                                         @endif
-                                        <label for="floatingInput">Email address</label>
+                                        <label for="floatingInput">Username</label>
                                     </div>
                                     <div class="form-floating mb-3">
                                         <input type="password" class="form-control" id="password"
