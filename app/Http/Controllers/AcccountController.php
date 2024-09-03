@@ -6,6 +6,8 @@ use App\Models\Account;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Hash;
+use Session;
 
 class AcccountController extends Controller
 {
@@ -114,7 +116,7 @@ class AcccountController extends Controller
         //update post without image
         $account->update([
             'username'     => $request->username,
-            'password'   => $request->password,
+            'password'   =>Hash::make($request->password) ,
             'name'   => $request->name,
             'role'   => $request->role
         ]);

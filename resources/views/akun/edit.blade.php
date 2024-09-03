@@ -48,7 +48,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="font-weight-bold">Password</label>
-                                <input type="text" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password', $account->password) }}">
+                                <input type="text" class="form-control @error('password') is-invalid @enderror" name="password">
                             
                                 @error('password')
                                     <div class="alert alert-danger mt-2">
