@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Account;
 use App\Models\Post;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
@@ -30,7 +31,8 @@ class PostController extends Controller
      */
     public function create(): View
     {
-        return view('post.create');
+        $username = Account::all();
+        return view('post.create', compact('username'));
     }
 
     /**

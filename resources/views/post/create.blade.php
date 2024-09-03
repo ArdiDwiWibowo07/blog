@@ -56,8 +56,11 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">Username</label>
                                 <select name="username" id="username" class="form-control @error('username') is-invalid @enderror">
-                                    <option value="test_ardi">Admin</option>
-                                    <option value="author">Author</option>
+                                    @forelse ($username as $u)
+                                    <option value="{{$u->username}}">{{$u->username}}</option>
+                                    @empty
+                                    <option value="">Tidak Ada User</option>
+                                    @endforelse
                                 </select>
                                 <!-- error message untuk title -->
                                 @error('username')

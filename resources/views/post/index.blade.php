@@ -20,15 +20,17 @@
                             <thead>
                               <tr>
                                 <th scope="col">Username</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Role</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Content</th>
+                                <th scope="col">Aksi</th>
                               </tr>
                             </thead>
                             <tbody>
                               @forelse ($posts as $post)
                                 <tr>
+                                    <td>{{ $post->username }}</td>
                                     <td>{{ $post->title }}</td>
-                                    <td>{!! $post->content !!}</td>
+                                    <td>{{ $post->content }}</td>
                                     <td class="text-center">
                                         <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('post.destroy', $post->idpost) }}" method="POST">
                                             <a href="{{ route('post.show', $post->idpost) }}" class="btn btn-sm btn-dark">SHOW</a>
