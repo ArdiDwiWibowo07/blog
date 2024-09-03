@@ -54,7 +54,7 @@ class AcccountController extends Controller
         //create post
         Account::create([
             'username'     => $request->username,
-            'password'   => $request->password,
+            'password'   => Hash::make($request->password) ,
             'name'   => $request->name,
             'role'   => $request->role
         ]);
