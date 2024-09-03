@@ -31,8 +31,8 @@
                                     <td>{!! $post->content !!}</td>
                                     <td class="text-center">
                                         <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('post.destroy', $post->idpost) }}" method="POST">
-                                            <a href="{{ route('post.show', $post->id) }}" class="btn btn-sm btn-dark">SHOW</a>
-                                            <a href="{{ route('post.edit', $post->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                            <a href="{{ route('post.show', $post->idpost) }}" class="btn btn-sm btn-dark">SHOW</a>
+                                            <a href="{{ route('post.edit', $post->idpost) }}" class="btn btn-sm btn-primary">EDIT</a>
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>

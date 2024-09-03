@@ -19,9 +19,12 @@ return new class extends Migration
             $table->string('username', 45);
 
             $table->foreign('username')
-                  ->references('username')
-                  ->on('accounts')
-                  ->onDelete('cascade'); // Optional: specify action on delete
+                ->references('username')
+                ->on('accounts')
+                ->onDelete('cascade'); // Optional: specify action on delete
+            $table->timestamps();
+            // Set the table engine
+            $table->engine = 'InnoDB';
         });
     }
 

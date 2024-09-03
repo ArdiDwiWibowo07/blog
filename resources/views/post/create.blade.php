@@ -56,7 +56,7 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">Username</label>
                                 <select name="username" id="username" class="form-control @error('username') is-invalid @enderror">
-                                    <option value="admin">Admin</option>
+                                    <option value="test_ardi">Admin</option>
                                     <option value="author">Author</option>
                                 </select>
                                 <!-- error message untuk title -->
