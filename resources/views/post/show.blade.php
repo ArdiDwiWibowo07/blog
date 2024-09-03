@@ -18,11 +18,18 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
+                @if ( auth()->user()->role  == 'admin')
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('account') }}">Account</a>
                 </li>
+                @endif
+                @if ( auth()->user()->role  == 'author')
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('post') }}">Post</a>
+                </li>
+                @endif
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('signout') }}">Logout</a>
                 </li>
             </ul>
         </div>

@@ -11,7 +11,7 @@
 </head>
 
 <body style="background: lightgray">
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
         <a class="navbar-brand" href="#">Blog</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -21,12 +21,16 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
+                @if ( auth()->user()->role  == 'admin')
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('account') }}">Account</a>
                 </li>
+                @endif
+                @if ( auth()->user()->role  == 'author')
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('post') }}">Post</a>
                 </li>
+                @endif
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('signout') }}">Logout</a>
                 </li>
