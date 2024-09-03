@@ -13,14 +13,9 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
-                <div>
-                    <h3 class="text-center my-4">Tutorial Laravel 10 untuk Pemula</h3>
-                    <h5 class="text-center"><a href="https://santrikoding.com">www.santrikoding.com</a></h5>         
-                    <hr>
-                </div>
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
-                        <a href="{{ route('account.create') }}" class="btn btn-md btn-success mb-3">TAMBAH POST</a>
+                        <a href="{{ route('post.create') }}" class="btn btn-md btn-success mb-3">TAMBAH POST</a>
                         <table class="table table-bordered">
                             <thead>
                               <tr>
@@ -30,14 +25,14 @@
                               </tr>
                             </thead>
                             <tbody>
-                              @forelse ($accounts as $accont)
+                              @forelse ($posts as $post)
                                 <tr>
-                                    <td>{{ $accont->title }}</td>
-                                    <td>{!! $accont->content !!}</td>
+                                    <td>{{ $post->title }}</td>
+                                    <td>{!! $post->content !!}</td>
                                     <td class="text-center">
-                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('posts.destroy', $post->id) }}" method="POST">
-                                            <a href="{{ route('posts.show', $post->id) }}" class="btn btn-sm btn-dark">SHOW</a>
-                                            <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('post.destroy', $post->idpost) }}" method="POST">
+                                            <a href="{{ route('post.show', $post->id) }}" class="btn btn-sm btn-dark">SHOW</a>
+                                            <a href="{{ route('post.edit', $post->id) }}" class="btn btn-sm btn-primary">EDIT</a>
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
@@ -51,7 +46,7 @@
                               @endforelse
                             </tbody>
                           </table>  
-                          {{ $accounts->links() }}
+                          {{ $posts->links() }}
                     </div>
                 </div>
             </div>

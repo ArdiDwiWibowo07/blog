@@ -30,7 +30,7 @@ class PostController extends Controller
      */
     public function create(): View
     {
-        return view('akun.create');
+        return view('post.create');
     }
 
     /**
@@ -41,24 +41,25 @@ class PostController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+
         //validate form
         $this->validate($request, [
-            'username'     => 'required|min:5',
-            'password'     => 'required|min:5',
-            'name'   => 'required|min:5',
-            'role'   => 'required'
+            'title'     => 'required|min:5',
+            'content'     => 'required|min:5',
+            'date'   => 'required',
+            'username'   => 'required'
         ]);
 
         //create post
-        Account::create([
-            'username'     => $request->username,
-            'password'   => $request->password,
-            'name'   => $request->name,
-            'role'   => $request->role
+        Post::create([
+            'title'     => $request->title,
+            'content'   => $request->content,
+            'date'   => $request->date,
+            'username'   => $request->username
         ]);
 
         //redirect to index
-        return redirect()->route('account.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        return redirect()->route('post.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     /**
@@ -70,10 +71,10 @@ class PostController extends Controller
     public function show(string $id): View
     {
         //get post by ID
-        $account = Account::where('username', $id)->first();
+        $post = Post::where('username', $id)->first();
 
         //render view with post
-        return view('akun.show', compact('account'));
+        return view('post.show', compact('post'));
     }
 
     /**
@@ -85,10 +86,10 @@ class PostController extends Controller
     public function edit(string $id): View
     {
         //get post by ID
-        $account = Account::findOrFail($id);
+        $post = Post::findOrFail($id);
 
         //render view with post
-        return view('akun.edit', compact('account'));
+        return view('post.edit', compact('post'));
     }
 
     /**
@@ -102,25 +103,25 @@ class PostController extends Controller
     {
         //validate form
         $this->validate($request, [
-            'username'     => 'required|min:5',
-            'password'     => 'required|min:5',
-            'name'   => 'required|min:5',
-            'role'   => 'required'
+            'title'     => 'required|min:5',
+            'content'     => 'required|min:5',
+            'date'   => 'required',
+            'username'   => 'required'
         ]);
 
         //get post by ID
-        $account = Account::findOrFail($id);
+        $post = Post::findOrFail($id);
 
         //update post without image
-        $account->update([
-            'username'     => $request->username,
-            'password'   => $request->password,
-            'name'   => $request->name,
-            'role'   => $request->role
+        $post->update([
+            'title'     => $request->title,
+            'content'   => $request->content,
+            'date'   => $request->date,
+            'username'   => $request->username
         ]);
 
         //redirect to index
-        return redirect()->route('account.index')->with(['success' => 'Data Berhasil Diubah!']);
+        return redirect()->route('post.index')->with(['success' => 'Data Berhasil Diubah!']);
     }
 
     /**
@@ -132,12 +133,12 @@ class PostController extends Controller
     public function destroy($id): RedirectResponse
     {
         //get post by ID
-        $account = Account::findOrFail($id);
+        $post = Post::findOrFail($id);
 
         //delete post
-        $account->delete();
+        $post->delete();
 
         //redirect to index
-        return redirect()->route('account.index')->with(['success' => 'Data Berhasil Dihapus!']);
+        return redirect()->route('post.index')->with(['success' => 'Data Berhasil Dihapus!']);
     }
 }

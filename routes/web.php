@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::resource('/account', \App\Http\Controllers\AcccountController::class);
+Route::resource('/post', \App\Http\Controllers\PostController::class);
