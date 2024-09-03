@@ -73,7 +73,7 @@ class PostController extends Controller
     public function show(string $id): View
     {
         //get post by ID
-        $post = Post::where('username', $id)->first();
+        $post = Post::where('idpost', $id)->first();
 
         //render view with post
         return view('post.show', compact('post'));
@@ -88,10 +88,11 @@ class PostController extends Controller
     public function edit(string $id): View
     {
         //get post by ID
-        $post = Post::findOrFail($id);
+       $post = Post::where('idpost', $id)->first();
+       $username = Account::all();
 
         //render view with post
-        return view('post.edit', compact('post'));
+        return view('post.edit', compact('post', 'username'));
     }
 
     /**
